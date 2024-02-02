@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.sroll-width {
+  scrollbar-width: thin;
+}
+
+.categoryDiv {
+  transition: all 0.3s;
+}
+
+.categoryDiv.active {
+  transform: translateX(0%);
+}
+
+.settingDiv {
+  transition: all 0.3s;
+}
+.settingDiv.active {
+  transform: translateX(0%);
+}
+
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
