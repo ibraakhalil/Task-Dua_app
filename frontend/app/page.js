@@ -46,7 +46,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex gap-[2rem] bg-bg p-6 pb-0 min-h-[100vh] overflow-hidden relative">
+    <main className="flex gap-[2rem] bg-bg p-6 pb-0 max-h-[100vh] min-h-[100vh] overflow-hidden relative">
       <Sidebar />
       <div className="wrapper w-[100%] flex flex-col">
         <header className=" flex justify-between gap-20 items-center mb-4 w-[100%]">

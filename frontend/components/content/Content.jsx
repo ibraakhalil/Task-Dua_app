@@ -27,7 +27,7 @@ function Content({ id, subCategories, duas }) {
     }
     return (
         <div className='content-wrapper scroll-smooth sroll-width  h-[calc(100vh-100px)] overflow-auto pr-2'>
-            <div className="modal bg-black py-4 px-8 rounded text-white absolute bottom-20 left-[36%] translate-y-[400%]">
+            <div className="modal bg-black py-4 px-8 rounded text-white absolute top-12 left-[36%] translate-y-[-400%]">
                 <p>Coming Soon Insha-Allah</p>
             </div>
             {subCategories?.filter(item => item.cat_id == id)?.map((items, i) => <div key={i}>
