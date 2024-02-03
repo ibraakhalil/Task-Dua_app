@@ -7,14 +7,29 @@ import { PiLightbulbFilament, PiWarningOctagonLight } from "react-icons/pi";
 
 function Content({ id, subCategories, duas }) {
     const [play, setPlay] = useState(true)
+    const [modal, setModal] = useState(false)
+    const modalClass = document.querySelector('.modal')
 
     const handleControl = (e) => {
         setPlay(!play)
         if (play) e.currentTarget.nextSibling.play()
         if (!play) e.currentTarget.nextSibling.pause()
     }
+
+    modal && setTimeout(() => {
+        modalClass.classList.remove('active')
+        setModal(false)
+    }, 1500);
+
+    const handleAction = (e) => {
+        modalClass.classList.add('active')
+        setModal(true)
+    }
     return (
         <div className='content-wrapper scroll-smooth sroll-width  h-[calc(100vh-100px)] overflow-auto pr-2'>
+            <div className="modal bg-black py-4 px-8 rounded text-white absolute bottom-20 left-[36%] translate-y-[400%]">
+                <p>Coming Soon Insha-Allah</p>
+            </div>
             {subCategories?.filter(item => item.cat_id == id)?.map((items, i) => <div key={i}>
                 <div id={`sub_cat_${items.subcat_id}`} className="subcategory-name bg-white rounded-xl mb-4 p-4 font-medium">
                     <p><span className='text-primary'>Section:</span> {items.subcat_name_en}</p>
@@ -52,11 +67,11 @@ function Content({ id, subCategories, duas }) {
                                 {item.audio && <audio id='player' src={item.audio}></audio>}
                             </div>
                             <div className="actions text-gray-400 flex items-center gap-8 text-[23px] justify-end">
-                                <IoCopyOutline />
-                                <IoBookmarkOutline />
-                                <PiLightbulbFilament />
-                                <IoShareSocialOutline />
-                                <PiWarningOctagonLight />
+                                <span onClick={handleAction} className='cursor-pointer'><IoCopyOutline /></span>
+                                <span onClick={handleAction} className='cursor-pointer'><IoBookmarkOutline /></span>
+                                <span onClick={handleAction} className='cursor-pointer'><PiLightbulbFilament /></span>
+                                <span onClick={handleAction} className='cursor-pointer'><IoShareSocialOutline /></span>
+                                <span onClick={handleAction} className='cursor-pointer'><PiWarningOctagonLight /></span>
                             </div>
                         </div>
                     </div>)}

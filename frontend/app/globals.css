@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 
-
+.modal {
+	transition: all 0.3s cubic-bezier(.18,.89,.32,1.28);
+}
+.modal.active {
+  transform: translateY(0%)
+}
 .sroll-width {
   scrollbar-width: thin;
 }
