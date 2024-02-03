@@ -8,6 +8,13 @@
   scrollbar-width: thin;
 }
 
+.category.active #category {
+  background: #ebeef2;
+}
+.category.active .sub_category {
+  display: block !important;
+}
+
 .categoryDiv {
   transition: all 0.3s;
 }

@@ -6,7 +6,7 @@ import { PiLightbulbFilament, PiWarningOctagonLight } from "react-icons/pi";
 
 
 function Content({ id, subCategories, duas }) {
-    const [play, setPlay] = useState(false)
+    const [play, setPlay] = useState(true)
 
     const handleControl = (e) => {
         setPlay(!play)
@@ -48,7 +48,7 @@ function Content({ id, subCategories, duas }) {
                         </div>}
                         <div className='flex justify-between items-center mt-10'>
                             <div className='audio'>
-                                {item.audio && <Image onClick={handleControl} src={!play ? '/pause.svg' : '/audiobtn.svg'} width={40} height={40} alt='audio' className='cursor-pointer'/>}
+                                {item.audio && <Image onClick={handleControl} src={!play ? '/pause.svg' : '/audiobtn.svg'} width={40} height={40} alt='audio' className='cursor-pointer' />}
                                 {item.audio && <audio id='player' src={item.audio}></audio>}
                             </div>
                             <div className="actions text-gray-400 flex items-center gap-8 text-[23px] justify-end">

@@ -7,11 +7,13 @@ import { CiSearch } from "react-icons/ci";
 
 export default function Categori({ categoryId, subCategories, duas }) {
     const [categories, setCategories] = useState([])
+    const [filtCategories, setFiltCategories] = useState([])
 
     useEffect(() => {
         axios.get(`${API_URL}/categories`)
             .then(res => {
                 setCategories(res.data)
+                setFiltCategories(res.data)
             })
             .catch(e => console.log(e.message))
     }, [])
@@ -21,9 +23,9 @@ export default function Categori({ categoryId, subCategories, duas }) {
         const target = e.currentTarget
         categoryId(target.dataset.id)
         categoriClasses.forEach(item => {
-            item.querySelector('.sub_category').style.display = 'none'
+            item.classList.remove('active')
         })
-        target.querySelector('.sub_category').style.display = 'block'
+        target.classList.add('active')
     }
 
     const showDuaCategory = (e) => {
@@ -35,18 +37,25 @@ export default function Categori({ categoryId, subCategories, duas }) {
         target.querySelector('.dua').style.display = 'block'
     }
 
+    const handleSearch = (e) => {
+        const value = e.currentTarget.value.toLowerCase()
+        const searchCategory = categories.filter(item => item.cat_name_en.toLowerCase().includes(value))
+        console.log(searchCategory);
+        setFiltCategories(searchCategory);
+    }
+
     return (
         <div className="categoryDiv min-w-[350px] rounded-xl overflow-hidden bg-white max-[1024px]:absolute left-0 max-[1024px]:max-w-[350px] max-[1024px]:translate-x-[-100%]">
             <h3 className="bg-primary text-white p-4 text-center">Categories</h3>
             <div className="flex items-center p-3 border bg-white rounded-md m-3 gap-2 ">
                 <CiSearch />
-                <input className="outline-none text-[14px]" type="text" placeholder="Search by categories" />
+                <input onChange={handleSearch} className="outline-none text-[14px]" type="text" placeholder="Search by categories" />
             </div>
             <div className="wrapper sroll-width h-[calc(100vh-230px)] overflow-auto p-2">
-                {categories?.map((category, i) => <div onClick={handleClick} key={i} className="category mb-2" data-id={category.cat_id}>
-                    <div className="flex justify-between items-center bg-white hover:bg-bg hover:cursor-pointer rounded-md p-2">
+                {filtCategories?.map((category, i) => <div onClick={handleClick} key={i} className="category mb-2" data-id={category.cat_id}>
+                    <div id="category" className="flex justify-between items-center bg-white hover:bg-bg hover:cursor-pointer rounded-md p-2">
                         <div className="flex gap-2">
-                            <Image className="border rounded-md bg-white p-1" src={'/mosque.png'} width={60} height={60} alt="img" />
+                            <Image className="border rounded-md bg-white p-3" src={`/category/${category.cat_icon || 'bari'}.svg`} width={55} height={55} alt="img" />
                             <div>
                                 <h5 className="text-primary font-medium">{category.cat_name_en}</h5>
                                 <small className="text-gray-500">Subcategory: {category.no_of_subcat}</small>
