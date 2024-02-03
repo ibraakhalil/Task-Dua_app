@@ -8,7 +8,6 @@ import { PiLightbulbFilament, PiWarningOctagonLight } from "react-icons/pi";
 function Content({ id, subCategories, duas }) {
     const [play, setPlay] = useState(true)
     const [modal, setModal] = useState(false)
-    const modalClass = document.querySelector('.modal')
 
     const handleControl = (e) => {
         setPlay(!play)
@@ -17,11 +16,13 @@ function Content({ id, subCategories, duas }) {
     }
 
     modal && setTimeout(() => {
+        const modalClass = document.querySelector('.modal')
         modalClass.classList.remove('active')
         setModal(false)
     }, 1500);
 
     const handleAction = (e) => {
+        const modalClass = document.querySelector('.modal')
         modalClass.classList.add('active')
         setModal(true)
     }
