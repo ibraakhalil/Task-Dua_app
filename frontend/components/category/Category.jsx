@@ -67,10 +67,10 @@ export default function Categori({ categoryId, subCategories, duas }) {
                         </div>
                     </div>
                     <ul className="sub_category hidden display-none ml-9 py-2 sub-category border-l-2 border-dotted border-primary">
-                        {subCategories?.filter(item => item.cat_id == category.cat_id).map(subCategori => <a onClick={showDuaCategory} href={`#sub_cat_${subCategori.subcat_id}`} className="block pl-3 mb-3 cursor-pointer relative before:content-[''] before:absolute before:w-2 before:h-2 before:rounded-full before:bg-primary before:top-[9px] before:left-[-4.5px]">
+                        {subCategories?.filter(item => item.cat_id == category.cat_id).map((subCategori, i) => <a key={i} onClick={showDuaCategory} href={`#sub_cat_${subCategori.subcat_id}`} className="block pl-3 mb-3 cursor-pointer relative before:content-[''] before:absolute before:w-2 before:h-2 before:rounded-full before:bg-primary before:top-[9px] before:left-[-4.5px]">
                             {subCategori.subcat_name_en}
                             <div className="dua hidden pt-4 text-gray-500 text-[14px]">
-                                {duas?.filter(y => y.subcat_id == subCategori.subcat_id).map(dua => <a href={`#${dua.dua_id}`} className="mb-3 block pl-5 before:content-['⇒'] before:absolute before:left-3">
+                                {duas?.filter(y => y.subcat_id == subCategori.subcat_id).map((dua, i) => <a key={i} href={`#${dua.dua_id}`} className="mb-3 block pl-5 before:content-['⇒'] before:absolute before:left-3">
                                     {dua.dua_name_en}
                                 </a>)}
                             </div>

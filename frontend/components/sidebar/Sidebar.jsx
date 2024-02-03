@@ -17,7 +17,7 @@ function Sidebar() {
       </div>
       <ul className='max-[1024px]:flex max-[1024px]:w-[100%] justify-between max-[600px]:overflow-auto gap-3'>
         {array.map((arr, i) =>
-          <li className='bg-bg text-primary rounded-full min-w-[40px] h-[40px] lg:mb-6 flex justify-center items-center text-2xl cursor-pointer'>{arr}</li>
+          <li key={i} className='bg-bg text-primary rounded-full min-w-[40px] h-[40px] lg:mb-6 flex justify-center items-center text-2xl cursor-pointer'>{arr}</li>
         )}
       </ul>
       <div className='bg-primary text-white mt-16 rounded-md min-w-[50px] min-h-[50px] flex justify-center items-center text-3xl font-bold max-[1024px]:hidden'><FaHandHoldingHeart /></div>
